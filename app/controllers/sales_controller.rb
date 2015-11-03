@@ -17,7 +17,7 @@ class SalesController < ApplicationController
       flash.now[:notice] = "Sale created!"
       redirect_to user_path(id: @sale.id, user_id: @sale.user_id)
     else
-      flash.now[:error] = "Invalid input - Please try creating sale again"
+      flash.now[:error] = @sale.errors.full_messages
       render :new
     end
   end
@@ -55,7 +55,7 @@ class SalesController < ApplicationController
                                  :farmers_market_fee, :cost_of_lemonade,:cost_of_ice_tea,
                                  :cost_of_cups,:misc,:insurance_fee,:stand_fee,
                                  :commission_fee,:starting_tips,:ending_tips,:your_tips,
-                                 :total_profit)
+                                 :total_profit,:total_expenses,:total_profit)
   end
 end
 

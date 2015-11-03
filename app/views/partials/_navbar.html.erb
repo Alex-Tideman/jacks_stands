@@ -1,0 +1,13 @@
+<nav>
+  <div class="nav-wrapper">
+    <%= link_to "Jacks Stands", root_path, class:"brand-logo center" %>
+    <ul class="right">
+      <% if current_user %>
+        <li><%= link_to current_user.email, user_path(current_user) %></li>
+    <% else %>
+        <li><%= link_to "Login", login_path %></li>
+      <% end %>
+        <li><%= link_to "Logout", logout_path, method: :delete %></li>
+    </ul>
+  </div>
+</nav>

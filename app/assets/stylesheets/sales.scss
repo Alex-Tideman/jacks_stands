@@ -6,21 +6,25 @@
   width: 80%;
   margin-left:10%;
   margin-right:10%;
+  margin-bottom:10%;
 }
 
-.alert {
+#table-title {
+  font-size:32px;
   text-align: center;
-  padding: 20px;
+  margin-top:3%;
+  margin-bottom:3%;
 }
 
-.alert-math {
-  background:orange;
+.sale-info {
+  font-size:12px;
 }
 
-.alert-notice {
-  background:green;
+.card-content {
+  color:black;
 }
 
-.alert-error {
-  background:red;
+#new-sale-btn {
+  width:200px;
+  margin-top: -30%;
 }

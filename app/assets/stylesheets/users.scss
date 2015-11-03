@@ -2,7 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+nav {
+  background:yellow;
+}
 
+nav a,a:visited,a:link{
+  color:black;
+}
+
+#home {
+  text-align:center;
+}
 .form {
   width: 50%;
   margin-top: 5%;
@@ -11,4 +21,25 @@
 
 .submit-btn {
   margin-top:5%;
+  background:yellow;
+  color: black;
+}
+
+.submit-btn:hover {
+  background:#ffde23;
+  color: white;
+}
+
+.p-l-btn {
+  background:yellow;
+  margin-top:5%;
+}
+
+.p-l-btn:hover {
+  background: #ffde23;
+  color:white;
+}
+
+#user-show {
+  text-align:center;
 }

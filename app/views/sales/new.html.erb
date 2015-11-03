@@ -2,38 +2,41 @@
   <%= form_for(@sale, url: user_sales_path) do |f| %>
       <table id='sale-table' class="highlight">
         <thead>
-        <tr>
-          <th id="table-title">Stand Profit and Loss Statement</th>
-          <th id="table-title"></th>
-        </tr>
+          <div id="table-title">Stand Profit and Loss Statement</div>
         </thead>
         <tbody>
         <tr>
+          <th><strong>Stand Info</strong></th>
           <th><%= f.label :date, "Date of Sale" %></th>
           <th><%= f.label :location, "Location" %></th>
           <th><%= f.label :family, "Family" %></th>
         </tr>
         <tr>
+          <td></td>
           <td><%= f.text_field :date %></td>
           <td><%= f.text_field :location %></td>
           <td><%= f.text_field :family %></td>
         </tr>
         <tr>
+          <th><strong>Bank</strong></th>
           <th><%= f.label :starting_bank, "Start of Bank" %></th>
           <th><%= f.label :ending_bank, "End of Bank" %></th>
           <th><%= f.label :revenue, "Revenue" %></th>
         </tr>
         <tr>
+          <td></td>
           <td><%= f.text_field :starting_bank %></td>
           <td><%= f.text_field :ending_bank %></td>
           <td><%= f.text_field :revenue %></td>
         </tr>
         <tr>
+          <th><strong>Expenses</strong></th>
           <th><%= f.label :number_of_cups, "Number of Cups" %></th>
           <th><%= f.label :sales_tax, "Sales Tax" %></th>
           <th><%= f.label :farmers_market_fee, "Farmers Market Fee" %></th>
         </tr>
         <tr>
+          <td></td>
           <td><%= f.text_field :number_of_cups %></td>
           <td><%= f.text_field :sales_tax %></td>
           <td><%= f.text_field :farmers_market_fee %></td>
@@ -51,39 +54,59 @@
           <td><%= f.text_field :misc %></td>
         </tr>
         <tr>
+          <th><strong>Fees</strong></th>
           <th><%= f.label :commission_fee, "Commission Fee" %></th>
           <th><%= f.label :insurance_fee, "Insurance Fee" %></th>
-          <th><%= f.label :stand_fee, "Stand fee" %></th>
+          <th><%= f.label :stand_fee, "Stand Fee" %></th>
         </tr>
         <tr>
+          <td></td>
           <td><%= f.text_field :commission_fee %></td>
           <td><%= f.text_field :insurance_fee %></td>
           <td><%= f.text_field :stand_fee %></td>
         </tr>
         <tr>
-          <th><%= f.label :starting_tips, "Starting Tips" %></th>
-          <th><%= f.label :ending_tips, "Ending Tips" %></th>
-          <th><%= f.label :your_tips, "Your Tips" %></th>
+          <th><strong>How Much Did I Spend?</strong></th>
+          <th><%= f.label :total_expenses, "Total Expenses" %></th>
         </tr>
         <tr>
+          <td>(Expenses + Fees)</td>
+          <td><%= f.text_field :total_expenses %></td>
+        </tr>
+        <tr>
+          <th><strong>My Profit/Loss</strong></th>
+          <th><%= f.label :total_profit, "Profit/Loss" %></th>
+        </tr>
+        <tr>
+          <td>(Revenue - Total Expenses)</td>
+          <td><%= f.text_field :total_profit %></td>
+        </tr>
+        <tr>
+          <th><strong>Tips</strong></th>
+          <th><%= f.label :starting_tips, "Starting Tips" %></th>
+          <th><%= f.label :ending_tips, "Ending Tips" %></th>
+          <th><%= f.label :your_tips, "My Tips" %></th>
+        </tr>
+        <tr>
+          <td></td>
           <td><%= f.text_field :starting_tips %></td>
           <td><%= f.text_field :ending_tips %></td>
           <td><%= f.text_field :your_tips %></td>
         </tr>
         <tr>
+          <th><strong>How Much Did I Make?</strong></th>
           <th><%= f.label :total_profit, "Total Profit" %></th>
         </tr>
         <tr>
+          <td>(My Profit/Loss + My Tips)</td>
           <td><%= f.text_field :total_profit %></td>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <td><%= f.submit "Submit", id:"new-sale-btn", class:"btn waves-effect waves-light submit-btn" %></td>
         </tr>
         <!--<tr>-->
           <!--<td><%#= f.select(:activity_id, Activity.all.map{ |a| ["#{a.name}", a.id] } ) %></td>-->
           <!--<td><%#= f.file_field :image %></td>-->
         <!--</tr>-->
-        <tr>
-          <td><%= f.submit "Submit", class:"btn waves-effect waves-light" %></td>
-        </tr>
-        </tr>
         </tbody>
       </table>
   <% end %>

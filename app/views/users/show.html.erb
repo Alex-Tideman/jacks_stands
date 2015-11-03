@@ -1,3 +1,26 @@
-<h3>Hey There Member!</h3>
-<h6>You are logged in as <%= @user.email %></h6>
-<p><%= link_to 'Enter New P%L Statement', new_user_sale_path(@user) %></p>
+<div id="user-show" class="row">
+  <div class="col s6">
+    <h3>Hey There Member!</h3>
+    <h6>You are logged in as <strong><%= @user.email %></strong></h6>
+    <%= link_to 'Enter New P&L Statement', new_user_sale_path(@user), class:"waves-effect waves-light btn-large p-l-btn" %>
+  </div>
+  <div class="col s6">
+    <h3>My Sales</h3>
+    <div class="row">
+      <% current_user.sales.each do |sale| %>
+      <div class="col s6">
+        <div class="card amber lighten-2">
+          <div class="card-content white-text">
+            <span class="card-title"></span>
+            On <%= sale.date %> at <%= sale.location %><br>
+            Made $<%= sale.total_profit %>
+          </div>
+          <div class="card-action">
+            <%= link_to "View Sale", user_sale_path(id: sale.id,user_id:current_user.id), class:"sale-info" %> <%= link_to "Edit Sale", edit_user_sale_path(id: sale.id,user_id:current_user.id),class:"sale-info" %>
+          </div>
+        </div>
+      </div>
+          <% end %>
+      </div>
+  </div>
+</div>
