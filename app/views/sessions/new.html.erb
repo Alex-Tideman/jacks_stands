@@ -1,23 +1,22 @@
-<div class="form-background">
+<div class="form">
   <%= form_for(:session, url: login_path) do |f| %>
       <table id = "whole-card" class="mdl-data-table mdl-js-data-table">
         <thead>
         <tr>
-          <th id="table-title" class="mdl-data-table__cell--non-numeric">Login</th>
-          <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
-          <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
-        </tr>
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric"><%= f.label :email %></td>
-          <td class="mdl-data-table__cell--non-numeric"><%= f.label :password %></td>
-          <td class="mdl-data-table__cell--non-numeric"><%= f.label :submit %></td>
+          <th id="table-title">Login</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td class="mdl-data-table__cell--non-numeric"><%= f.text_field :email %></td>
-          <td class="mdl-data-table__cell--non-numeric"><%= f.password_field :password %></td>
-          <td class="mdl-data-table__cell--non-numeric"><%= f.submit "Login" %></td>
+          <td id="form-label"><%= f.label :email %></td>
+          <td id="form-label"><%= f.text_field :email %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password %></td>
+          <td><%= f.password_field :password %></td>
+        </tr>
+        <tr>
+          <td><%= f.submit "Login", class:"waves-effect waves-light btn-large submit-btn" %></td>
         </tr>
         </tbody>
       </table>
