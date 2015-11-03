@@ -11,7 +11,7 @@ class SalesController < ApplicationController
   def create
     @sale = Sale.new(sale_params)
     if @sale.ending_bank - @sale.starting_bank != @sale.revenue
-      flash.now[:math] = "Check that math again...Hint #{@sale.ending_bank - @sale.starting_bank}"
+      flash.now[:math] = "Check that math again...Hint (Ending bank - starting bank}"
       render :new
     elsif @sale.save
       flash.now[:notice] = "Sale created!"
