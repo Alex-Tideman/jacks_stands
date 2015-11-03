@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030163728) do
+ActiveRecord::Schema.define(version: 20151103011144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "sales", force: :cascade do |t|
+    t.date     "date"
+    t.string   "location"
+    t.string   "family"
+    t.decimal  "starting_bank"
+    t.decimal  "ending_bank"
+    t.integer  "number_of_cups"
+    t.decimal  "sales_tax"
+    t.decimal  "farmers_market_fee"
+    t.decimal  "cost_of_lemonade"
+    t.decimal  "cost_of_ice_tea"
+    t.decimal  "cost_of_cups"
+    t.decimal  "misc"
+    t.decimal  "insurance_fee"
+    t.decimal  "stand_fee"
+    t.decimal  "commission_fee"
+    t.decimal  "starting_tips"
+    t.decimal  "ending_tips"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
