@@ -1,51 +1,87 @@
 <article>
-  <%= form_for @sale do |f| %>
-      <table id = "whole-card" class="mdl-data-table mdl-js-data-table edit-trip-table">
+  <%= form_for(@sale, url: user_sales_path) do |f| %>
+      <table id='sale-table' class="highlight">
         <thead>
         <tr>
-          <th id="table-title"><%= @title %> Trip</th>
+          <th id="table-title">New Sale</th>
           <th id="table-title"></th>
-        </tr>
-        <tr>
-          <th><%= f.label :name, "Trip Name:" %></th>
-          <th><%= f.label :description, "Description:" %></th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td><%= f.text_field :name %></td>
-          <td><%= f.text_field :description %></td>
+          <th><%= f.label :date, "Date of Sale" %></th>
+          <th><%= f.label :location, "Location" %></th>
+          <th><%= f.label :family, "Family" %></th>
         </tr>
         <tr>
-          <th><%= f.label :trip_cost, "Trip Cost:" %></th>
-          <th><%= f.label :destination_id, "Destination:" %></th>
+          <td><%= f.text_field :date %></td>
+          <td><%= f.text_field :location %></td>
+          <td><%= f.text_field :family %></td>
         </tr>
         <tr>
-          <td><%= f.number_field :trip_cost %></td>
-          <td><%= f.select(:destination_id, Destination.all.map{ |d| ["#{d.continent}", d.id ] } ) %></td>
-        </tr>
-
-        <tr>
-          <th><%= f.label :lat, "Latitude:" %></th>
-          <th><%= f.label :long, "Longitude:" %></th>
+          <th><%= f.label :starting_bank, "Start of Bank" %></th>
+          <th><%= f.label :ending_bank, "End of Bank" %></th>
+          <th><%= f.label :revenue, "Revenue" %></th>
         </tr>
         <tr>
-          <td><%= f.number_field :lat %></td>
-          <td><%= f.number_field :long %></td>
-        </tr>
-
-
-        <tr>
-          <th><%= f.label :activity_id, "Activity:" %></th>
-          <th><%= f.label :image, "Image:" %></th>
+          <td><%= f.text_field :starting_bank %></td>
+          <td><%= f.text_field :ending_bank %></td>
+          <td><%= f.text_field :revenue %></td>
         </tr>
         <tr>
-          <td><%= f.select(:activity_id, Activity.all.map{ |a| ["#{a.name}", a.id] } ) %></td>
-          <td><%= f.file_field :image %></td>
+          <th><%= f.label :number_of_cups, "Number of Cups" %></th>
+          <th><%= f.label :sales_tax, "Sales Tax" %></th>
+          <th><%= f.label :farmers_market_fee, "Farmers Market Fee" %></th>
         </tr>
         <tr>
-          <td></td>
-          <td><%= f.submit "#{@title} Trip" %></td>
+          <td><%= f.text_field :number_of_cups %></td>
+          <td><%= f.text_field :sales_tax %></td>
+          <td><%= f.text_field :farmers_market_fee %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :cost_of_lemonade, "Cost of Lemonade" %></th>
+          <th><%= f.label :cost_of_ice_tea, "Cost of Ice Tea" %></th>
+          <th><%= f.label :cost_of_cups, "Cost of Cups" %></th>
+          <th><%= f.label :misc, "Misc. (straws)" %></th>
+        </tr>
+        <tr>
+          <td><%= f.text_field :cost_of_lemonade %></td>
+          <td><%= f.text_field :cost_of_ice_tea %></td>
+          <td><%= f.text_field :cost_of_cups %></td>
+          <td><%= f.text_field :misc %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :commission_fee, "Commission Fee" %></th>
+          <th><%= f.label :insurance_fee, "Insurance Fee" %></th>
+          <th><%= f.label :stand_fee, "Stand fee" %></th>
+        </tr>
+        <tr>
+          <td><%= f.text_field :commission_fee %></td>
+          <td><%= f.text_field :insurance_fee %></td>
+          <td><%= f.text_field :stand_fee %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :starting_tips, "Starting Tips" %></th>
+          <th><%= f.label :ending_tips, "Ending Tips" %></th>
+          <th><%= f.label :your_tips, "Your Tips" %></th>
+        </tr>
+        <tr>
+          <td><%= f.text_field :starting_tips %></td>
+          <td><%= f.text_field :ending_tips %></td>
+          <td><%= f.text_field :your_tips %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :total_profit, "Total Profit" %></th>
+        </tr>
+        <tr>
+          <td><%= f.text_field :total_profit %></td>
+        </tr>
+        <!--<tr>-->
+          <!--<td><%#= f.select(:activity_id, Activity.all.map{ |a| ["#{a.name}", a.id] } ) %></td>-->
+          <!--<td><%#= f.file_field :image %></td>-->
+        <!--</tr>-->
+        <tr>
+          <td><%= f.submit "Submit", class:"btn waves-effect waves-light" %></td>
         </tr>
         </tr>
         </tbody>

@@ -10,11 +10,14 @@ class SalesController < ApplicationController
 
   def create
     @sale = Sale.new(sale_params)
-    if @sale.save
-      flash[:notice] = "Sale created!"
-      redirect_to user_sales_path
+    if @sale.ending_bank - @sale.starting_bank != @sale.revenue
+      flash.now[:math] = "Check that math again...Hint #{@sale.ending_bank - @sale.starting_bank}"
+      render :new
+    elsif @sale.save
+      flash.now[:notice] = "Sale created!"
+      redirect_to user_path(id: @sale.id, user_id: @sale.user_id)
     else
-      flash[:error] = "Invalid input - Please try creating sale again"
+      flash.now[:error] = "Invalid input - Please try creating sale again"
       render :new
     end
   end
@@ -30,10 +33,10 @@ class SalesController < ApplicationController
   def update
     @sale = Sale.find(params[:id])
     if @sale.update_attributes(sale_params)
-      flash[:notice] = "Sale updated!"
+      flash.now[:notice] = "Sale updated!"
       redirect_to user_sales_path
     else
-      flash[:error] = "Invalid input - Please try updating trip again"
+      flash.now[:error] = "Invalid input - Please try updating trip again"
       render :edit
     end
   end
@@ -41,32 +44,18 @@ class SalesController < ApplicationController
   def destroy
     @sale = Sale.find(params[:id])
     @sale.destroy
-    redirect_to admin_trips_path
+    redirect_to user_sales_path
   end
+
   private
 
   def sale_params
-    params.require(:sale).permit(:date, :location, :family, :starting_bank,
-                                 :ending_bank, :number_of_cups, :sales_tax,
-                                 :farmers_market_fee, :cost_of_lemonad,)
+    params.require(:sale).permit(:user_id,:date, :location, :family, :starting_bank,
+                                 :ending_bank,:revenue,:number_of_cups, :sales_tax,
+                                 :farmers_market_fee, :cost_of_lemonade,:cost_of_ice_tea,
+                                 :cost_of_cups,:misc,:insurance_fee,:stand_fee,
+                                 :commission_fee,:starting_tips,:ending_tips,:your_tips,
+                                 :total_profit)
   end
 end
 
-
-t.date     "date"
-t.string   "location"
-t.string   "family"
-t.decimal  "starting_bank"
-t.decimal  "ending_bank"
-t.integer  "number_of_cups"
-t.decimal  "sales_tax"
-t.decimal  "farmers_market_fee"
-t.decimal  "cost_of_lemonade"
-t.decimal  "cost_of_ice_tea"
-t.decimal  "cost_of_cups"
-t.decimal  "misc"
-t.decimal  "insurance_fee"
-t.decimal  "stand_fee"
-t.decimal  "commission_fee"
-t.decimal  "starting_tips"
-t.decimal  "ending_tips"

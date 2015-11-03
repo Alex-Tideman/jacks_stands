@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
-  root "users#index"
+  root 'welcome#index'
 
-  namespace :admin do
-    resources :users
+  resources :users do
+    resources :sales
   end
 
-  get '/admin/dashboard', to: 'admin/dashboard#index'
-
-  resources :users, only: [:new, :create, :edit, :update]
-
-  get '/profile', to: 'users#show'
-
-  resources :trips, only: [:index, :show]
+  get '/login', to: "sessions#new"
+  post '/login', to: "sessions#create"
+  delete '/logout', to: "sessions#destroy", as: "logout"
 
 
 end

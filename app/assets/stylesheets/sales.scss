@@ -1,3 +1,24 @@
 // Place all the styles related to the sales controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#sale-table {
+  width: 80%;
+}
+
+.alert {
+  text-align: center;
+  padding: 20px;
+}
+
+.alert-math {
+  background:orange;
+}
+
+.alert-notice {
+  background:green;
+}
+
+.alert-error {
+  background:red;
+}

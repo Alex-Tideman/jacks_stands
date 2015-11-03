@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Welcome back #{@user.email}!"
-      redirect_to root_path
+      redirect_to @user
     else
       flash[:error] = "Invalid input - Please try creating user again"
       render :new
@@ -39,8 +39,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    if @user.update(username: params[:user][:email],
-                    password: params[:user][:password])
+    if @user.update(username: params[:users][:email],
+                    password: params[:users][:password])
       flash[:notice] = "Profile updated!"
       if current_admin?
         redirect_to admin_dashboard_path
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:users).permit(:email, :password)
   end
 
 end

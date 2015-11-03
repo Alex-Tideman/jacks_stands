@@ -7,13 +7,8 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      if current_admin?
-        flash[:notice] = "Welcome back admin"
-        redirect_to admin_dashboard_path
-      else
-        flash[:notice] = "Successful login!"
-        redirect_to root_path
-      end
+      flash[:notice] = "Successful login!"
+      redirect_to @user
     else
       flash[:error] = "Invalid login credentials"
       render :new
